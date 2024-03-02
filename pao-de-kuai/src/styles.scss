@@ -1,2 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
-@import "styles/card.scss"
+@use '@angular/material' as mat;
+@import "styles/card.scss";
+
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 10px; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+ }
+
+
+ body {
+    background-image: url("/assets/images/abstract-black-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+ $custom-primary-palette: (
+    50: #fff3f3,
+    100: #ffe9e9,
+    200: #ffd8d8,
+    300: #ffc0c0,
+    400: #ffb3b3,
+    500: #ffa5a5,
+    600: #ff9797,
+    700: #fc8a8a,
+    800: #f57c7c,
+    900: #ee6e6e,
+    a100: #d55555,
+    a200: #aa3333,
+    a400: #9c2525,
+    a700: #7b1d1d,
+    contrast: (
+        50: #000,
+        100: #fff,
+        200: #fff,
+        300: #fff, 
+        400: #fff,
+        500: #fff,
+    ),
+ );
+
+ // define-palette(palette, default hue, lighter hue, darker hue, text hue)
+$custom-primary: mat.define-palette($custom-primary-palette, a700);
+$custom-accent: mat.define-palette(mat.$green-palette, A700);
+$custom-warn: mat.define-palette(mat.$orange-palette, A200, A100, A400); 
+
+$custom-theme: mat.define-light-theme(
+    (
+        color: (
+        primary: $custom-primary,
+        accent: $custom-accent,
+        warn: $custom-warn,
+        ),
+    )
+);
+
+@include mat.all-component-themes($custom-theme);

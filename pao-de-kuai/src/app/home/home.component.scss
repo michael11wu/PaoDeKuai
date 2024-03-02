@@ -1,0 +1,36 @@
+.logo {
+    width: 80vh;
+    height: auto;
+}
+
+.container {
+    //border: 1px solid red;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.join-rooms{
+   width: 30vh;
+   height: auto;
+   //border: 1px solid red;
+   position: absolute;
+   top: 80%;
+   left: 50%;
+   transform: translate(-50%, -50%); 
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-buttons-input {
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+    text-align: center;
+}
