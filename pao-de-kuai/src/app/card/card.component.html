@@ -1,0 +1,25 @@
+<div *ngIf=" show ;else noShow" [ngStyle]="{'color': (suit=='♠︎' || suit=='♣︎' || value=='JB') ? 'black' : 'red'}" (click)="onSelect()">
+    <div style="position: relative;">
+        <div class = "card-button" *ngIf="suit == '🃟';else elseBlock" style="font-size: 5vh; align-items: center; justify-content: center;" [ngStyle]="{'left': index * 35+'px','background-color': selected ? '#C6C6C6' : 'white', 'transform': selected ? 'translateY(-3px)' : 'translateY(0px)'}">
+            <span>
+                {{suit}}
+            </span>
+        </div>
+        <ng-template #elseBlock>
+                <div class="card-button" [ngStyle]="{'left': index * 35 +'px', 'background-color': selected ? '#C6C6C6' : 'white', 'transform': selected ? 'translateY(-3px)' : 'translateY(0px)'}">
+                    <span>
+                        {{suit}}{{value}}
+                    </span>
+                    <span style="text-align: center;">
+                        {{suit}}
+                    </span>
+                    <span style="transform: rotate(180deg);">
+                        {{suit}}{{value}}
+                    </span>
+                </div>
+        </ng-template>
+    </div>
+</div>
+<ng-template #noShow>
+    <div class = "card_back card-button"></div>
+</ng-template>

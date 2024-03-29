@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { Client } from 'colyseus.js';
-import { Room } from '../room.js';
+import { Room } from './room.js';
+import { GameService } from '../game.service.js';
 
 @Component({
   selector: 'app-home',
@@ -11,24 +11,25 @@ import { Room } from '../room.js';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+   
+  constructor(private gameService: GameService) {};
+
   room: Room = {
     id: '',
     join_disabled: true,
-    name: ''
+    name: ''  
   };
 
-  public createRoom() {
-    var client = new Client('tp://localhost:2567/');
-    client.joinOrCreate('my_room', {
-      // your join options here...
-      name:'test'
-    }).then((room) => { 
-      console.log(room.sessionId,"joined successfully!", room.name);
-    }).catch(e => {console.log("JOIN ERROR", e)});
+  public createRoom() { 
+    this.gameService.createRoom();
   }
 
+  public joinRoom() {
+    this.gameService.joinRoom(this.room.id);
+  }  
+
   public onChange(event: Event): void {
-    this.room.id = (<HTMLInputElement>event.target).value;
+    this.room.id = (<HTMLInputElement>event.target).value.toUpperCase();
     if (this.room.id.length == 4) {
       this.room.join_disabled = false;
     }

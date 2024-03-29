@@ -1,8 +1,10 @@
- <div class="container stack">
-    <img class="logo" src="../../assets/images/logo-transparent.png" alt="logo"/>
- </div>
- <div class="join-rooms stack">
-    <button class="user-buttons-input" (click)="createRoom()">Create Room</button>
-    <input class="user-buttons-input" type="text" (change)="onChange($event)" value={{room.id.toUpperCase()}} placeholder="Enter Room ID" maxlength="4">
-    <button class="user-buttons-input" [(disabled)]="room.join_disabled">Join Room</button>
+<div class="grid-vertical">
+   <div class="stack">
+      <img class="logo" src="../../assets/images/logo-transparent.png" alt="logo"/>
+   </div>
+   <div class="stack" style="width: 30%">
+      <button mat-raised-button color="primary" class="user-buttons-input" (click)="createRoom()">Create Room</button>
+      <input class="user-buttons-input" type="text" (keyup)="onChange($event)" value={{room.id}} placeholder="Room ID: ABCD" maxlength="4">
+      <button mat-raised-button color="primary" class="user-buttons-input" [disabled]="room.join_disabled" (click)="joinRoom()">Join Room</button>
+   </div>
 </div>

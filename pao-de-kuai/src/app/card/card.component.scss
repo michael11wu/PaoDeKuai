@@ -1,0 +1,17 @@
+.card-button {
+  width: 3vw;
+  height: 9vh;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0px;
+  cursor: pointer;
+  min-width: 50px; 
+  min-height: 60px;
+
+  &:hover { 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }                                                                                                                                                                                                            
+}

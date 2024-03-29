@@ -1,1 +1,43 @@
-<p>game works!</p>
+<div class="grid-vertical" style="grid-template-rows: 2fr 5fr 1fr 1fr 1fr;">
+    
+    <div class="cards" style="width: 50%; transform: rotate(180deg);">
+        <app-card [suit]="card.suit" [value]="card.displayValue" [index]='i' [show]="false" *ngFor="let card of $any(otherPlayers[0]); index as i"></app-card>
+    </div>
+    
+    <div class="table">
+        <div class="cards"  style = "transform-origin: top left; transform: rotate(90deg);  position: absolute; max-width: 50vh; min-width: 200px;">
+            <app-card [suit]="card.suit" [value]="card.displayValue" [index]='i' [show]="false" *ngFor="let card of $any(otherPlayers[1]); index as i"></app-card>
+        </div>
+        <div class = "cardPile card_back"></div>
+        <div class="player1">
+            <div>
+                <p>You</p>
+            </div>
+        </div>
+        <p class="player2">Player 2</p> 
+        <p class="player3">Player 3</p>
+        <p class="player4">Player 4</p>
+        <div class="cards"  style = "transform-origin: top right; transform: rotate(-90deg); position: absolute; right: 0; max-width: 50vh; min-width: 200px;">
+            <app-card [suit]="card.suit" [value]="card.displayValue" [index]='i' [show]="false" *ngFor="let card of $any(otherPlayers[2]); index as i"></app-card>
+        </div>
+    </div>
+    
+    <div class="cards" style = "width: 50%; margin-bottom: 1%;">
+        <app-card [suit]="card.suit" [value]="card.displayValue" [index]='i' [show]="true" *ngFor="let card of $any(hand); index as i"></app-card>
+    </div>
+
+    <div class = "playing-options">
+        <button mat-raised-button color="primary" style="margin: 10px;" (click)="leaveRoom()">Play</button>
+        <button mat-raised-button color="primary" style="margin: 10px;" [hidden]="!isRoomAdmin()" (click)="startGame()">Skip</button>
+    </div>
+    
+    <div class="game_info">
+        <div>Room ID: {{this.room?.roomId}}</div>
+        <div>Player Count: {{this.room?.state?.playercount}}</div>
+        <div>
+            <button mat-raised-button color="primary" style="margin: 10px;" (click)="leaveRoom()">Leave</button>
+            <button mat-raised-button color="primary" style="margin: 10px;" [hidden]="!isRoomAdmin()" (click)="startGame()">Start</button>
+        </div>
+     
+    </div>
+</div>
